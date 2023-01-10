@@ -8,6 +8,10 @@
 import UIKit
 
 class TimerCell: UITableViewCell, TimerViewModelDelegate {
+    func onTimerStateChanges(_ isPaused: Bool) {
+        self.runningFlag.isHidden = !isPaused
+    }
+    
     func onTimerTick(_ time: Decimal) {
         guard let vm = viewModel else { timeLabel.text = "0.0" ; return }
         
@@ -17,6 +21,7 @@ class TimerCell: UITableViewCell, TimerViewModelDelegate {
     
 
     @IBOutlet weak var timeLabel:UILabel!
+    @IBOutlet weak var runningFlag:UIView!
     
     var viewModel: TimerViewModel?
     
@@ -25,6 +30,7 @@ class TimerCell: UITableViewCell, TimerViewModelDelegate {
         viewModel?.delegate = self
         guard let vm = viewModel else { timeLabel.text = "0.0" ; return }
         timeLabel.text = "\(vm.totalTime)"
+                
     }
     
     override func awakeFromNib() {

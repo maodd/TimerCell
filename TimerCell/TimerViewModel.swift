@@ -9,6 +9,7 @@ import Foundation
 
 protocol TimerViewModelDelegate : AnyObject {
     func onTimerTick(_ time: Decimal)
+    func onTimerStateChanges(_ isRunning: Bool)
 }
 
 class TimerViewModel {
@@ -20,6 +21,7 @@ class TimerViewModel {
             return timer != nil && timer!.isValid
         }
     }
+    var isManuallyPaused: Bool = false
     var timer: Timer?
     var id: Int!
     
@@ -47,12 +49,15 @@ class TimerViewModel {
             self.timer = timer
         }
         self.timer?.fire()
+        delegate?.onTimerStateChanges(isRunning)
     }
     
-    func pauseTimer() {
+    func pauseTimer(_ manualyPaused: Bool) {
         if timer != nil {
             timer!.invalidate()
             timer = nil
+            isManuallyPaused = manualyPaused
+            delegate?.onTimerStateChanges(isRunning)
         }
     }
 

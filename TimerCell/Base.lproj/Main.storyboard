@@ -28,8 +28,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yj-SJ-idz">
+                                                    <rect key="frame" x="16" y="19.666666666666668" width="4" height="4"/>
+                                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="4" id="63h-po-IwZ"/>
+                                                        <constraint firstAttribute="width" constant="4" id="i0R-IC-Jja"/>
+                                                    </constraints>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSe-FY-Xi6">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="353" height="21.333333333333329"/>
+                                                    <rect key="frame" x="40" y="10.999999999999998" width="333" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -37,12 +45,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CSe-FY-Xi6" firstAttribute="trailing" secondItem="0r2-mR-atw" secondAttribute="trailingMargin" id="nOu-Rs-7KO"/>
-                                                <constraint firstItem="CSe-FY-Xi6" firstAttribute="leading" secondItem="0r2-mR-atw" secondAttribute="leadingMargin" id="sSp-2C-Y8h"/>
+                                                <constraint firstItem="CSe-FY-Xi6" firstAttribute="leading" secondItem="0r2-mR-atw" secondAttribute="leadingMargin" constant="20" id="sSp-2C-Y8h"/>
+                                                <constraint firstItem="4Yj-SJ-idz" firstAttribute="centerY" secondItem="0r2-mR-atw" secondAttribute="centerY" id="wcK-io-B0j"/>
                                                 <constraint firstItem="CSe-FY-Xi6" firstAttribute="centerY" secondItem="0r2-mR-atw" secondAttribute="centerY" id="z0a-qk-8ut"/>
                                                 <constraint firstItem="CSe-FY-Xi6" firstAttribute="top" secondItem="0r2-mR-atw" secondAttribute="topMargin" id="z54-N1-eLv"/>
+                                                <constraint firstItem="4Yj-SJ-idz" firstAttribute="leading" secondItem="0r2-mR-atw" secondAttribute="leading" constant="16" id="zKp-S8-Xm0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="runningFlag" destination="4Yj-SJ-idz" id="5hB-MT-Vjs"/>
                                             <outlet property="timeLabel" destination="CSe-FY-Xi6" id="MOi-7z-JEj"/>
                                         </connections>
                                     </tableViewCell>
@@ -68,6 +79,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
