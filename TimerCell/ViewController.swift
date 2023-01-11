@@ -16,17 +16,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        for i in 0..<50 {
-            viewModelList.append(TimerViewModel(i))
+        
+        // this repating init style actually fill in same vm to the list.
+//         viewModelList = [TimerViewModel](repeating: TimerViewModel(), count: 50)
+        
+        for _ in 0..<50 {
+            viewModelList.append(TimerViewModel()) // ensure each vm is different.
         }
+
         tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModelList.count
     }
-
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -34,8 +37,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
-    
-    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -52,6 +53,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let vm = viewModelList[indexPath.row]
         cell.setViewModel(vm)
         vm.pauseTimer(false)
+        
+        cell.viewModel = nil // vm no use anymore, can clean up.
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

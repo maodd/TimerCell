@@ -22,13 +22,7 @@ class TimerViewModel {
         }
     }
     var isManuallyPaused: Bool = false
-    var timer: Timer?
-    var id: Int!
-    
-    init(_ id: Int) {
-        self.id = id // without this iOS seems doesn't know which vm/cell to bind.
-                     // ended up with only last cell has a valid timer running.
-    }
+    var timer: Timer?    
     
     var totalTime: Decimal = 0.0
     
